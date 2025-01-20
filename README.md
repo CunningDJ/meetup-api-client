@@ -1,4 +1,5 @@
-# Meetup API Prototype
+# Meetup API Client
+I had trouble finding a useful client library for Meetup's GQL API, so I made one, complete with Typescript types. Feel free to send PRs or let me know if there's something you think can be added or improved!
 
 # Setup
 1. Apply for and get an approved [Meetup API Client secret](https://www.meetup.com/api/oauth/list/)
