@@ -1,4 +1,4 @@
-import axios, { AxiosPromise } from 'axios';
+import axios, { AxiosPromise, AxiosResponse } from 'axios';
 import { Event, EventType, Group, GroupSponsor, Image, MailchimpList, ProNetwork, SearchConnection, SearchSources, SocialNetwork } from '.';
 import { EVENT_QUERY, GROUP_QUERY, KEYWORD_SEARCH_QUERY, PRO_NETWORK_QUERY } from './queries';
 
@@ -15,10 +15,9 @@ const axiosClient = axios.create({
 /**
  * GQL Debug Log
  */
-export const gqlResponseLog = (res) => {
+export const gqlResponseDebugLog = (res: AxiosResponse) => {
   const { data, status, statusText } = res;
-  console.log('data:', data);
-  console.log(`status: ${status} (${statusText})`);
+  console.debug(`HTTP ${status} (${statusText}):`, data);
 }
 
 /**

@@ -1,29 +1,29 @@
 import 'dotenv/config';
 
-import { gqlResponseLog, queryEvent, queryKeywordSearch, queryHealthCheck, queryGroup, queryProNetwork } from './meetup/client';
+import { gqlResponseDebugLog, queryEvent, queryKeywordSearch, queryHealthCheck, queryGroup, queryProNetwork } from './meetup/client';
 
 function main() {
   // HEALTH CHECK
   queryHealthCheck()
-    .then(gqlResponseLog)
+    .then(gqlResponseDebugLog)
 
   // EVENT
   queryEvent("305391431")
-    .then(gqlResponseLog)
+    .then(gqlResponseDebugLog)
 
   // GROUP
   queryGroup('nycaiu')
-    .then(gqlResponseLog)
+    .then(gqlResponseDebugLog)
 
   // Uncomment below to test these:
 
   // // KEYWORD SEARCH
   // queryKeywordSearch("EVENTS", "tech events")
-  // .then(gqlResponseLog)
+  // .then(gqlResponseDebugLog)
 
   // // PRO NETWORK
   // queryProNetwork("some ID")
-  // .then(gqlResponseLog)
+  // .then(gqlResponseDebugLog)
 }
 
 main();
