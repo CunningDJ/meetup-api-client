@@ -1,5 +1,5 @@
 {
-  "name": "meetup-api-proto",
+  "name": "meetup-api-client",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
