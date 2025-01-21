@@ -11,11 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@types/axios": "^0.14.4",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.4",
     "@types/node": "^22.10.7",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
