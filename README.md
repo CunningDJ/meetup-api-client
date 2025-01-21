@@ -18,7 +18,7 @@ I had trouble finding a useful client library for Meetup's GQL API, so I made on
 # Contributing
 The [app.ts](src/app.ts) file currently contains sample uses of the GQL query client functions for quick experimentation.  Feel free to look over and expand upon the [Typescript types](src/meetup/index.d.ts), [GQL queries and fragments](src/meetup/queries.ts), or both.  
 
-I'm also open to other ideas on how to expand on this - this currently stands primarily as a library of client functions to make us of the Meetup API, but I could see new features and improvements (e.g. storage, caching, retry logic, error handling, nicer logging) being built in or adjacent to it.
+I'm also open to other ideas on how to expand on this - this currently stands primarily as a library of client functions to make use of the Meetup API, but I could see new features and improvements (e.g. storage, caching, retry logic, error handling, nicer logging) being built in or adjacent to it.
 
 # Meetup API: Background
 The query system is based on Meetup API's [GQL schema](https://www.meetup.com/api/schema/#graphQl-schema).  It uses an axios version of this query:
