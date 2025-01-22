@@ -12,7 +12,7 @@ export type Image = {
   source: string;
 }
 
-const UsState = "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
+type UsState = "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
 
 // https://www.meetup.com/api/schema/#MemberStatus
 type MemberStatus =
@@ -169,19 +169,17 @@ export type Event = {
   maxTickets: number;
   guestsAllowed: boolean;
   numberOfAllowedGuests: number;
-  eventType: EventType;
   howToFindUs: string;
   group: Group;
   dateTime: Date; // datestring
   endTime: string; // datestring
   timezone: string;
   duration: number;
-  venue: Venue;
   images: Image[];
   // onlineVenue: (OnlineVenue)	If event is online
   status: EventStatus;
   // timeStatus: (EventTimeStatus)	Time Status of the event
-  createdAt: Date: // datestring
+  createdAt: Date; // datestring
   priceTier: EventPriceTier;
   going: number;
   waiting: number;
@@ -349,37 +347,37 @@ export type Group = {
   link: string;
   proNetwork: ProNetwork;
   sponsors: GroupSponsor[];
-  stats: GroupStats;
-  memberships: GroupUserConnection;
-  membershipSearch: MembershipSearchConnection;
-  eventSearch: GroupEventSearchConnection;
-  emailListAddress: string;
-  joinMode: GroupJoinMode;
   needsPhoto: boolean;
   needsQuestions: boolean;
   questions: GroupQuestion[];
   welcomeBlurb: string;
-  membershipDues: DuesCheckoutSettings;
-  duesSettings: DuesSettings;
-  membershipMetadata: GroupMembership;
-  draftEvents: DraftEventConnection;
-  pastEvents: PastEventConnection;
-  upcomingEvents: UpcomingEventsConnection;
+  emailListAddress: string;
   video: GroupVideo;
-  venues: GroupVenueConnection;
-  stepUpInfo: StepUpInfo;
-  experiments: ExperimentPayload;
-  featuredEventPhotos: FeaturedEventPhotoConnection;
   isNewGroup: boolean;
-  groupApprovalStatus: GroupApprovalStatus;
-  featuredEvent: EventShort;
-  fundraising: GroupFundraising;
-  mailingListMode: GroupMailingListMode;
-  status: GroupStatus;
   organizer: User;
   socialNetworks: SocialNetwork[];
-  membershipInsights: MembershipInsights;
+  featuredEvent: EventShort;
   allowMemberPhotoUploads: boolean;
   canAddPhotos: boolean;
-  groupAnalytics: GroupAnalytics;
+  // stats: GroupStats;
+  // memberships: GroupUserConnection;
+  // membershipSearch: MembershipSearchConnection;
+  // eventSearch: GroupEventSearchConnection;
+  // joinMode: GroupJoinMode;
+  // membershipDues: DuesCheckoutSettings;
+  // duesSettings: DuesSettings;
+  // membershipMetadata: GroupMembership;
+  // draftEvents: DraftEventConnection;
+  // pastEvents: PastEventConnection;
+  // upcomingEvents: UpcomingEventsConnection;
+  // venues: GroupVenueConnection;
+  // stepUpInfo: StepUpInfo;
+  // experiments: ExperimentPayload;
+  // featuredEventPhotos: FeaturedEventPhotoConnection;
+  // groupApprovalStatus: GroupApprovalStatus;
+  // fundraising: GroupFundraising;
+  // mailingListMode: GroupMailingListMode;
+  // status: GroupStatus;
+  // membershipInsights: MembershipInsights;
+  // groupAnalytics: GroupAnalytics;
 }

@@ -373,10 +373,3 @@ export const PRO_NETWORK_QUERY = gql(baseFragments, `
     }
   }
 `);
-
-
-import fs from 'fs'
-fs.writeFileSync('tmp/EVENT_QUERY.gql', EVENT_QUERY);
-fs.writeFileSync('tmp/GROUP_QUERY.gql', GROUP_QUERY);
-fs.writeFileSync('tmp/KEYWORD_SEARCH_QUERY.gql', KEYWORD_SEARCH_QUERY);
-fs.writeFileSync('tmp/PRO_NETWORK_QUERY.gql', PRO_NETWORK_QUERY);
