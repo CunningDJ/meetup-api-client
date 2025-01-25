@@ -1,7 +1,7 @@
 # Meetup API Client
 There doesn't appear to be any Node client library for Meetup's GQL API, so I made one for [organizing purposes](https://nyctnb.com), complete with Typescript types.
 
-Feel free to [contribute](CONTRIBUTING.md) or [let me know](/issues) if there's something you think can be added or improved!
+Feel free to [contribute](CONTRIBUTING.md) or [let me know](../../issues) if there's something you think can be added or improved!
 
 ## Installing
 
