@@ -1,26 +1,52 @@
 # Meetup API Client
 I had trouble finding a useful client library for Meetup's GQL API, so I made one, complete with Typescript types. Feel free to send PRs or let me know if there's something you think can be added or improved!
 
-# Setup
-1. Apply for and get an approved [Meetup API Client secret](https://www.meetup.com/api/oauth/list/)
-1. [Install nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
-1. `nvm install`
-1. `npm install -g yarn`
-1. `yarn install`
-1. Copy `cp .env.example .env`
-1. Add `MEETUP_API_SECRET` value to .env - the **Secret** value **[here](https://www.meetup.com/api/oauth/list/)** (needs an approved key first - see Step 1)
+## Installing
 
-# Quick Start
-1. `nvm use`
-2. `yarn install`
-3. `yarn dev`
+### Package manager
 
-# Contributing
-The [app.ts](src/app.ts) file currently contains sample uses of the GQL query [client functions](src/meetup/client.ts) for quick experimentation.  Feel free to look over and expand upon the [Typescript types](src/meetup/index.d.ts), [GQL queries and fragments](src/meetup/queries.ts), or both.  
+Using npm:
 
-I'm also open to other ideas on how to expand on this - this currently stands primarily as a library of client functions to make use of the Meetup API, but I could see new features and improvements (e.g. storage, caching, retry logic, error handling, nicer logging) being built in or adjacent to it.
+```bash
+$ npm install @nyctnb/meetup-api-client
+```
 
-# Meetup API: Background
+Using bower:
+
+```bash
+$ bower install @nyctnb/meetup-api-client
+```
+
+Using yarn:
+
+```bash
+$ yarn add @nyctnb/meetup-api-client
+```
+
+Using pnpm:
+
+```bash
+$ pnpm add @nyctnb/meetup-api-client
+```
+
+Once the package is installed, you can import the library using `import` or `require` approach:
+
+```js
+import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from '@nyctnb/meetup-api-client';
+```
+
+## Getting Started
+
+1. Set `MEETUP_API_SECRET` env variable - the **Secret** value **[here](https://www.meetup.com/api/oauth/list/)** (needs an approved key first - see Step 1).  This can be done with `MEETUP_API_SECRET=abc123` or using a utility like [dotenv](https://www.npmjs.com/package/dotenv)
+2. Import the client functions like so:
+```js
+import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from '@nyctnb/meetup-api-client';
+```
+
+## Contributing
+If you're interested in contributing, look [here](CONTRIBUTING.md).  I'd love for others to help build this up further into a polished, full-fledged client for the Meetup API.  It would help organizers with dev skills do something with all of their group and member data.
+
+## Meetup API: Background
 The query system is based on Meetup API's [GQL schema](https://www.meetup.com/api/schema/#graphQl-schema).  It uses an axios version of this query:
 
 ```bash

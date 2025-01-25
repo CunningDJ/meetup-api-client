@@ -6,12 +6,12 @@
     "url": "git+https://github.com/CunningDJ/meetup-api-client.git"
   },
   "license": "ISC",
-  "description": "Client for Meetup API",
+  "description": "Client for Meetup API, developed for New York Tech & Beer and New York AI User Group (https://nyctnb.com)",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "nodemon src/app.ts",
+    "dev": "nodemon src/dev.ts",
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,12 +25,12 @@
     "axios"
   ],
   "dependencies": {
-    "axios": "^1.7.9",
-    "dotenv": "^16.4.7"
+    "axios": "^1.7.9"
   },
   "devDependencies": {
     "@types/axios": "^0.14.4",
     "@types/node": "^22.10.7",
+    "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
