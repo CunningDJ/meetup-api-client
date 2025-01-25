@@ -1,4 +1,5 @@
 {
+  "version": "0.0.2",
   "name": "@nyctnb/meetup-api-client",
   "author": "David Cunningham (https://github.com/CunningDJ)",
   "repository": {
@@ -7,7 +8,6 @@
   },
   "license": "ISC",
   "description": "Client for Meetup API, developed for New York Tech & Beer and New York AI User Group (https://nyctnb.com)",
-  "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
