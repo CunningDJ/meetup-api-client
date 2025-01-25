@@ -10,6 +10,9 @@
   "description": "Client for Meetup API, developed for New York Tech & Beer and New York AI User Group (https://nyctnb.com)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "nodemon src/dev.ts",
     "clean": "rm -rf dist",
