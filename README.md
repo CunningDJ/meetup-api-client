@@ -13,12 +13,6 @@ Using npm:
 $ npm install @nyctnb/meetup-api-client
 ```
 
-Using bower:
-
-```bash
-$ bower install @nyctnb/meetup-api-client
-```
-
 Using yarn:
 
 ```bash
@@ -29,6 +23,12 @@ Using pnpm:
 
 ```bash
 $ pnpm add @nyctnb/meetup-api-client
+```
+
+Using bower:
+
+```bash
+$ bower install @nyctnb/meetup-api-client
 ```
 
 Once the package is installed, you can import the library using `import` or `require` approach:

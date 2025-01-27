@@ -15,9 +15,8 @@
   ],
   "scripts": {
     "dev": "nodemon src/dev.ts",
-    "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "meetup",
