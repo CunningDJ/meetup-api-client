@@ -10,39 +10,39 @@ Feel free to [contribute](CONTRIBUTING.md) or [let me know](../../issues) if the
 Using npm:
 
 ```bash
-$ npm install @nyctnb/meetup-api-client
+$ npm install meetup-api-client
 ```
 
 Using yarn:
 
 ```bash
-$ yarn add @nyctnb/meetup-api-client
+$ yarn add meetup-api-client
 ```
 
 Using pnpm:
 
 ```bash
-$ pnpm add @nyctnb/meetup-api-client
+$ pnpm add meetup-api-client
 ```
 
 Using bower:
 
 ```bash
-$ bower install @nyctnb/meetup-api-client
+$ bower install meetup-api-client
 ```
 
 Once the package is installed, you can import the library using `import` or `require` approach:
 
 ```js
-import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from '@nyctnb/meetup-api-client';
+import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from 'meetup-api-client';
 ```
 
 ## Getting Started
 
-1. Set `MEETUP_API_SECRET` env variable - the **Secret** value **[here](https://www.meetup.com/api/oauth/list/)** (needs an approved key first - see Step 1).  This can be done with `MEETUP_API_SECRET=abc123` or using a utility like [dotenv](https://www.npmjs.com/package/dotenv)
+1. **Optional** (seems only necessary for the `proNetwork` query): Set `MEETUP_API_SECRET` env variable - the **Secret** value **[here](https://www.meetup.com/api/oauth/list/)** (needs an approved key first - see Step 1).  This can be done with `MEETUP_API_SECRET=abc123` or using a utility like [dotenv](https://www.npmjs.com/package/dotenv)
 2. Import the client functions like so:
 ```js
-import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from '@nyctnb/meetup-api-client';
+import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from 'meetup-api-client';
 ```
 
 ## Contributing

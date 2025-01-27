@@ -1,6 +1,6 @@
 {
   "version": "0.0.3",
-  "name": "@nyctnb/meetup-api-client",
+  "name": "meetup-api-client",
   "author": "David Cunningham (https://github.com/CunningDJ)",
   "repository": {
     "type": "git",
