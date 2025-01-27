@@ -39,7 +39,10 @@ import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSear
 
 ## Getting Started
 
-1. **Optional** (seems only necessary for the `proNetwork` query): Set `MEETUP_API_SECRET` env variable - the **Secret** value **[here](https://www.meetup.com/api/oauth/list/)** (needs an approved key first - see Step 1).  This can be done with `MEETUP_API_SECRET=abc123` or using a utility like [dotenv](https://www.npmjs.com/package/dotenv)
+1. **Optional**: Set `MEETUP_API_SECRET` env variable
+   * From testing, this only seems necessary for the `proNetwork` query, so this is not necessary to use the other queries in this library
+   * This the **API Secret** value that must be requested and approved in the **[Meetup API admin console](https://www.meetup.com/api/oauth/list/)** first
+   * Once this secret key is obtained, it can be set in the env in different ways, but in the [dev environment](CONTRIBUTING.md) for this repo, we use [dotenv](https://www.npmjs.com/package/dotenv)
 2. Import the client functions like so:
 ```js
 import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from 'meetup-api-client';
