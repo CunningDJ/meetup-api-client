@@ -15,10 +15,11 @@ You can also use equivalent `yarn`, `pnpm`, or `bower` commands to install.
    * From testing, this only seems necessary for the `proNetwork` query, so this is not necessary to use the other queries in this library
    * This the **API Secret** value that must be requested and approved in the **[Meetup API admin console](https://www.meetup.com/api/oauth/list/)** first
    * Once this secret key is obtained, it can be set in the env in different ways, but in the [dev environment](CONTRIBUTING.md) for this repo, we use [dotenv](https://www.npmjs.com/package/dotenv)
-2. Import (or `require`) the client functions like so:
+2. Import (or `require`) the client functions:
 ```js
 import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from 'meetup-api-client';
 ```
+These are complete with typescript definitions, so you can see what data you can expect to get back from each.
 
 ## Contributing
 If you're interested in contributing, look [here](CONTRIBUTING.md).  I'd love for others to help build this up further into a polished, full-fledged client for the Meetup API.  It would help organizers with dev skills do something with all of their group and member data.
