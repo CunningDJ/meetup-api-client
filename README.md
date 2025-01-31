@@ -4,38 +4,10 @@ There doesn't appear to be any Node client library for [Meetup's GQL API](https:
 Feel free to [contribute](CONTRIBUTING.md) or [let me know](../../issues) if there's something you think can be added or improved!
 
 ## Installing
-
-### Package manager
-
-Using npm:
-
 ```bash
 $ npm install meetup-api-client
 ```
-
-Using yarn:
-
-```bash
-$ yarn add meetup-api-client
-```
-
-Using pnpm:
-
-```bash
-$ pnpm add meetup-api-client
-```
-
-Using bower:
-
-```bash
-$ bower install meetup-api-client
-```
-
-Once the package is installed, you can import the library using `import` or `require` approach:
-
-```js
-import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from 'meetup-api-client';
-```
+You can also use equivalent `yarn`, `pnpm`, or `bower` commands to install.
 
 ## Getting Started
 
@@ -43,7 +15,7 @@ import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSear
    * From testing, this only seems necessary for the `proNetwork` query, so this is not necessary to use the other queries in this library
    * This the **API Secret** value that must be requested and approved in the **[Meetup API admin console](https://www.meetup.com/api/oauth/list/)** first
    * Once this secret key is obtained, it can be set in the env in different ways, but in the [dev environment](CONTRIBUTING.md) for this repo, we use [dotenv](https://www.npmjs.com/package/dotenv)
-2. Import the client functions like so:
+2. Import (or `require`) the client functions like so:
 ```js
 import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSearch, queryProNetwork } from 'meetup-api-client';
 ```
