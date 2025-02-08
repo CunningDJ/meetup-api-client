@@ -36,8 +36,4 @@ function main() {
   // fs.writeFileSync('tmp/PRO_NETWORK_QUERY.gql', PRO_NETWORK_QUERY);
 }
 
-
-// if (process.argv[1] === fileURLToPath(import.meta.url)) {
-//   console.log("I print to stdout!");
-// }
 main();

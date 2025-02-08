@@ -57,12 +57,10 @@ export const queryEvent = (eventId: string): AxiosPromise => (
  * Query: Group
  * Response schema: https://www.meetup.com/api/schema/#Group
  */
-type UrlNameOptions = "nyctnb" | "nycaiu";
-
 type QueryGroupVariables = {
   urlname: string;
 }
-export const queryGroup = (urlname: UrlNameOptions): AxiosPromise => (
+export const queryGroup = (urlname: string): AxiosPromise => (
   queryMeetup<QueryGroupVariables, Group>(GROUP_QUERY, { urlname })
 );
 
