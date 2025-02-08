@@ -48,7 +48,7 @@ type QueryEventVariables = {
   eventId: string;
 }
 
-export const queryEvent = (eventId: string): AxiosPromise => (
+export const queryEvent = (eventId: string): AxiosPromise<Event> => (
   queryMeetup<QueryEventVariables, Event>(EVENT_QUERY, { eventId })
 );
 
@@ -60,7 +60,7 @@ export const queryEvent = (eventId: string): AxiosPromise => (
 type QueryGroupVariables = {
   urlname: string;
 }
-export const queryGroup = (urlname: string): AxiosPromise => (
+export const queryGroup = (urlname: string): AxiosPromise<Group> => (
   queryMeetup<QueryGroupVariables, Group>(GROUP_QUERY, { urlname })
 );
 
