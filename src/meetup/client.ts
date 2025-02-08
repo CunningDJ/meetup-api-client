@@ -1,5 +1,5 @@
 import axios, { AxiosPromise, AxiosResponse } from 'axios';
-import { Event, EventType, Group, GroupSponsor, Image, MailchimpList, ProNetwork, SearchConnection, SearchSources, SocialNetwork } from '.';
+import { Event, EventType, Group, ProNetwork, SearchConnection, SearchSources } from '.';
 import { EVENT_QUERY, GROUP_QUERY, KEYWORD_SEARCH_QUERY, PRO_NETWORK_QUERY } from './queries';
 
 /**
@@ -116,7 +116,6 @@ export const queryKeywordSearch = (source: SearchSources, searchString: string, 
  * Query: proNetwork
  * Response: https://www.meetup.com/api/schema/#ProNetwork
  */
-export type ProNetworkStatus = "ACTIVE" | "INACTIVE" | "FROZEN";
 export type ProNetWorkResponse = ProNetwork;
 type QueryProNetworkVariables = {
   id: string;

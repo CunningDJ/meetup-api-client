@@ -1,1 +1,1 @@
-export * from './meetup/client';
+export * from './meetup';
