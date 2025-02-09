@@ -78,7 +78,7 @@ type GroupVideo = {
 }
 
 // https://www.meetup.com/api/schema/#ProNetwork
-type ProNetwork = {
+export type ProNetwork = {
   id: ID;
   urlname: string;
   name: string;
