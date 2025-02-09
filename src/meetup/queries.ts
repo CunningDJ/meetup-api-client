@@ -194,6 +194,7 @@ const groupBaseFragment = `
 
   fragment onGroup on Group {
     id
+    name
     logo {
       ...onImage
     }
@@ -213,7 +214,6 @@ const groupBaseFragment = `
     }
     description
     customMemberLabel
-    name
     urlname
     timezone
     city
@@ -281,6 +281,105 @@ const groupBaseFragment = `
   }
 `.trim();
 
+const onGroupEventsFragment = `
+  fragment onGroupEvents on Event {
+    id
+    title
+    eventUrl
+    dateTime
+    imageUrl
+    eventType
+    description
+    shortDescription
+    photoAlbum {
+      id
+      title
+      photoCount
+      photoSample(amount: 5) {
+        id
+        baseUrl
+        source
+      }
+    }
+    host {
+      id
+      name
+      username
+      memberPhoto {
+        id
+        baseUrl
+        source
+      }
+    }
+    howToFindUs
+    venue {
+      id
+      name
+      address
+      city
+      state	
+      postalCode
+      crossStreet
+      country
+      venueType
+      lat	
+      lng
+    }
+    status
+    shortUrl
+    hosts {
+      id
+      name
+      username
+      memberPhoto {
+        id
+        baseUrl
+        source
+      }
+    }
+    maxTickets
+    guestsAllowed
+    numberOfAllowedGuests
+    rsvpEventQuestion {
+      id
+      question
+      required
+    }
+    topics {
+      edges {
+        node {
+          id
+          name
+          urlkey
+        }
+      }
+    }
+  }
+`.trim();
+
+const upcomingEventsFragments = `
+  ${onGroupEventsFragment}
+  fragment onUpcomingEvents on UpcomingEventsConnection {
+    edges {
+      node {
+        ...onGroupEvents
+      }
+    }
+  }
+`.trim();
+
+const pastEventsFragments = `
+  ${onGroupEventsFragment}
+  fragment onPastEvents on PastEventConnection {
+    edges {
+      node {
+        ...onGroupEvents
+      }
+      cursor
+    }
+  }
+`.trim();
+
 
 const eventFragments = `
   ${baseFragments}
@@ -320,29 +419,16 @@ const keywordSearchFragments = `
 
 
 
-
 /**
  * GQL: QUERIES
  */
-
-/**
-{"filter":{
-  "query": "tech events",
-  "lat":40,
-  "lon": -80,
-  "city": "New York",
-  "state": "NY",
-  "source":"EVENTS"
-}}
- */
-
 // Base Query Function
-const gql = (fragments: string, queryString: string): string => `
+const gqlQuery = (fragments: string, queryString: string): string => `
   ${fragments}
   ${queryString}
 `;
 
-export const EVENT_QUERY = gql(eventFragments, `
+export const EVENT_QUERY = gqlQuery(eventFragments, `
   query($eventId: ID!) {
     event(id: $eventId) {
       ...onEvent
@@ -350,7 +436,7 @@ export const EVENT_QUERY = gql(eventFragments, `
   }
 `);
 
-export const GROUP_QUERY = gql(groupFragments, `
+export const GROUP_QUERY = gqlQuery(groupFragments, `
   query($urlname: String!) {
     groupByUrlname(urlname: $urlname) {
       ...onGroup
@@ -358,7 +444,31 @@ export const GROUP_QUERY = gql(groupFragments, `
   }
 `);
 
-export const KEYWORD_SEARCH_QUERY = gql(keywordSearchFragments, `
+export const GROUP_UPCOMING_EVENTS_QUERY = gqlQuery(upcomingEventsFragments, `
+  query($urlname: String!, $eventCount: Int!) {
+    groupByUrlname(urlname: $urlname) {
+      id
+      name
+      upcomingEvents(input: {first: $eventCount}) {
+        ...onUpcomingEvents
+      }
+    }
+  }
+`);
+
+export const GROUP_PAST_EVENTS_QUERY = gqlQuery(pastEventsFragments, `
+  query($urlname: String!, $eventCount: Int!) {
+    groupByUrlname(urlname: $urlname) {
+      id
+      name
+      pastEvents(input: {first: $eventCount}, sortOrder: DESC) {
+        ...onPastEvents
+      }
+    }
+  }
+`);
+
+export const KEYWORD_SEARCH_QUERY = gqlQuery(keywordSearchFragments, `
   query($filter: SearchConnectionFilter!) {
     keywordSearch(filter: $filter) {
       ...onSearchConnection
@@ -366,7 +476,7 @@ export const KEYWORD_SEARCH_QUERY = gql(keywordSearchFragments, `
   }
 `);
 
-export const PRO_NETWORK_QUERY = gql(baseFragments, `
+export const PRO_NETWORK_QUERY = gqlQuery(baseFragments, `
   query($id: ID!) {
     proNetwork(id: $id) {
       ...onProNetwork

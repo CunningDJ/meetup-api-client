@@ -1,6 +1,6 @@
 import axios, { AxiosPromise, AxiosResponse } from 'axios';
-import { Event, EventType, Group, ProNetwork, SearchConnection, SearchSources } from './types';
-import { EVENT_QUERY, GROUP_QUERY, KEYWORD_SEARCH_QUERY, PRO_NETWORK_QUERY } from './queries';
+import { Event, EventType, Group, GroupEvent, ID, ProNetwork, SearchConnection, SearchSources } from './types';
+import { EVENT_QUERY, GROUP_PAST_EVENTS_QUERY, GROUP_QUERY, GROUP_UPCOMING_EVENTS_QUERY, KEYWORD_SEARCH_QUERY, PRO_NETWORK_QUERY } from './queries';
 
 /**
  * Client
@@ -47,10 +47,18 @@ const queryMeetup = <V = object, RD = object>(query: string, variables?: V): Axi
 type QueryEventVariables = {
   eventId: string;
 }
+type QueryEventRawResponse = {
+  event: Event;
+}
 
-export const queryEvent = (eventId: string): AxiosPromise<Event> => (
-  queryMeetup<QueryEventVariables, Event>(EVENT_QUERY, { eventId })
-);
+export const queryEvent = async (eventId: string): AxiosPromise<Event> => {
+  const rawResponse = await queryMeetup<QueryEventVariables, QueryEventRawResponse>(EVENT_QUERY, { eventId });
+  const processedResponse: AxiosResponse<Event> = {
+    ...rawResponse,
+    data: rawResponse.data.event
+  };
+  return processedResponse;
+};
 
 
 /**
@@ -60,10 +68,81 @@ export const queryEvent = (eventId: string): AxiosPromise<Event> => (
 type QueryGroupVariables = {
   urlname: string;
 }
-export const queryGroup = (urlname: string): AxiosPromise<Group> => (
-  queryMeetup<QueryGroupVariables, Group>(GROUP_QUERY, { urlname })
-);
+type QueryGroupEventsVariables = QueryGroupVariables & {
+  eventCount: number;
+}
+type QueryGroupRawResponse = {
+  groupByUrlname: Group;
+}
+export const queryGroup = async (urlname: string): AxiosPromise<Group> => {
+  const rawResponse = await queryMeetup<QueryGroupVariables, QueryGroupRawResponse>(GROUP_QUERY, { urlname });
+  const processedResponse: AxiosResponse<Group> = {
+    ...rawResponse,
+    data: rawResponse.data.groupByUrlname
+  }
+  return processedResponse;
+};
 
+/**
+ * Query: Upcoming events by group
+ */
+type UpcomingEventsQueryRawResponse = {
+  groupByUrlname: {
+    id: ID;
+    name: string;
+    upcomingEvents: {
+      edges: GroupEvent[];
+    }
+  }
+}
+type UpcomingEventsQueryProcessedResponse = {
+  id: ID;
+  name: string;
+  upcomingEvents: GroupEvent[];
+}
+export const queryGroupUpcomingEvents = async (urlname: string, eventCount = 1000): AxiosPromise<UpcomingEventsQueryProcessedResponse> => {
+  const response = await queryMeetup<QueryGroupEventsVariables, UpcomingEventsQueryRawResponse>(GROUP_UPCOMING_EVENTS_QUERY, { urlname, eventCount });
+  const { data: { groupByUrlname } } = response;
+  const processedResponse: AxiosResponse<UpcomingEventsQueryProcessedResponse> = {
+    ...response,
+    data: {
+      ...groupByUrlname,
+      upcomingEvents: groupByUrlname.upcomingEvents.edges.map(({ node }: any) => node)
+    }
+  };
+  return processedResponse;
+};
+
+
+/**
+ * Query: Past events by group
+ */
+type PastEventsQueryRawResponse = {
+  groupByUrlname: {
+    id: ID;
+    name: string;
+    pastEvents: {
+      edges: GroupEvent[];
+    }
+  }
+}
+type PastEventsQueryProcessedResponse = {
+  id: ID;
+  name: string;
+  pastEvents: GroupEvent[];
+}
+export const queryGroupPastEvents = async (urlname: string, latestEventsCount = 1000): AxiosPromise<PastEventsQueryProcessedResponse> => {
+  const response = await queryMeetup<QueryGroupEventsVariables, PastEventsQueryRawResponse>(GROUP_PAST_EVENTS_QUERY, { urlname, eventCount: latestEventsCount });
+  const { data: { groupByUrlname } } = response;
+  const processedResponse: AxiosResponse<PastEventsQueryProcessedResponse> = {
+    ...response,
+    data: {
+      ...groupByUrlname,
+      pastEvents: groupByUrlname.pastEvents.edges.map(({ node }: any) => node)
+    }
+  };
+  return processedResponse;
+};
 
 /**
  * Query: Meetup Health Check

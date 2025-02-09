@@ -14,6 +14,8 @@ export type Image = {
 
 type UsState = "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
 
+type VenueType = "INDOORS" | "OUTDOORS" | "NONE";
+
 // https://www.meetup.com/api/schema/#MemberStatus
 type MemberStatus =
   "ACTIVE" |
@@ -138,7 +140,7 @@ type Venue = {
   postalCode: string;
   crossStreet: string;
   country: string;
-  venueType: string;
+  venueType: VenueType;
   lat: number;
   lon: number;
 };
@@ -186,7 +188,6 @@ export type Event = {
   rsvpEventQuestion: RsvpQuestion;
   isSaved: boolean;
   isOnline: boolean;
-
 
   // fees: (Fees)	Fees of the event
   // taxType: (String)	Type of tax for payment
@@ -320,6 +321,68 @@ export type SearchConnection = {
 
 export type SearchSources = "EVENTS" | "GROUPS";
 
+export type GroupEvent = {
+  id: ID;
+  title: string;
+  eventUrl: string;
+  dateTime: string;
+  imageUrl: string;
+  eventType: EventType;
+  description: string;
+  shortDescription: string;
+  photoAlbum: {
+    id: ID;
+    title: string;
+    photoCount: number;
+    photoSample: {
+      id: ID;
+      baseUrl: string;
+      source: string;
+    }
+  }
+  host: {
+    id: ID;
+    name: string;
+    username: string;
+    memberPhoto: {
+      id: ID;
+      baseUrl: string;
+      source: string;
+    }
+  }
+  howToFindUs: string;
+  venue: Venue;
+  status: EventStatus;
+  shortUrl: string;
+  hosts: {
+    id: ID;
+    name: string;
+    username: string;
+    memberPhoto: {
+      id: ID;
+      baseUrl: string;
+      source: string;
+    }
+  }
+  maxTickets: number;
+  guestsAllowed: boolean;
+  numberOfAllowedGuests: number;
+  rsvpEventQuestion: {
+    id: ID;
+    question: string;
+    required: boolean;
+  }
+  topics: {
+    edges: {
+      node: {
+        id: ID;
+        name: string;
+        urlkey: string;
+      }
+    }
+  }
+}
+
 // https://www.meetup.com/api/schema/#Group
 export type Group = {
   id: ID;
@@ -359,6 +422,10 @@ export type Group = {
   featuredEvent: EventShort;
   allowMemberPhotoUploads: boolean;
   canAddPhotos: boolean;
+
+  // pastEvents: any; // API ref: PastEventConnection;
+  // upcomingEvents: any; // API ref: UpcomingEventsConnection;
+
   // stats: GroupStats;
   // memberships: GroupUserConnection;
   // membershipSearch: MembershipSearchConnection;
@@ -368,8 +435,6 @@ export type Group = {
   // duesSettings: DuesSettings;
   // membershipMetadata: GroupMembership;
   // draftEvents: DraftEventConnection;
-  // pastEvents: PastEventConnection;
-  // upcomingEvents: UpcomingEventsConnection;
   // venues: GroupVenueConnection;
   // stepUpInfo: StepUpInfo;
   // experiments: ExperimentPayload;
