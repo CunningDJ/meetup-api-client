@@ -1,4 +1,7 @@
-# Meetup API Client
+<img src="./meetup-api-client.logo.png" height="500px" alt="MAC: Meetup API Client"/>
+
+[![npm: meetup-api-client](https://img.shields.io/npm/v/meetup-api-client.svg)](https://npmjs.com/package/meetup-api-client)
+# MAC: Meetup API Client
 There doesn't appear to be any Node client library for [Meetup's GQL API](https://www.meetup.com/api/general/), so I made one for [organizing purposes](https://nyctnb.com), complete with Typescript types.
 
 Feel free to [contribute](CONTRIBUTING.md) or [let me know](../../issues) if there's something you think can be added or improved!
@@ -22,7 +25,7 @@ import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSear
 These are complete with typescript definitions, so you can see what data you can expect to get back from each.
 
 ## Contributing
-If you're interested in contributing, look [here](CONTRIBUTING.md).  I'd love for others to help build this up further into a polished, full-fledged client for the Meetup API.  It would help organizers with dev skills do something with all of their group and member data.
+If you're interested in contributing, look [here](CONTRIBUTING.md).  I'd love if others would like to help build this further into a polished, full-fledged client for the Meetup API.  It would help organizers with dev skills do something with all of their group and member data.
 
 ## Meetup API: Background
 The query system is based on Meetup API's [GQL schema](https://www.meetup.com/api/schema/#graphQl-schema).  It uses an axios version of this query:
