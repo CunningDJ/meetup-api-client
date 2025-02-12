@@ -2,7 +2,7 @@
 See below to get up and running with adding onto and developing the Metup API Client
 
 ## Setup
-1. Apply for and get an approved [Meetup API Client secret](https://www.meetup.com/api/oauth/list/)
+1. (**Optional**: see main [README](README.md)) Apply for and get an approved [Meetup API Client secret](https://www.meetup.com/api/oauth/list/)
 1. [Install nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
 1. `nvm install`
 1. `npm install -g yarn`

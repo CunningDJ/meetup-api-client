@@ -1,4 +1,6 @@
-<img src="./meetup-api-client.logo.png" height="500px" alt="MAC: Meetup API Client"/>
+<div  align="center">
+<img src="https://cdn.bglad.io/img/meetup-api-client/meetup-api-client.logo.png" style="max-height:500px;max-width:500px;" height="100%" width="100%" alt="MAC: Meetup API Client"/>
+</div>
 
 [![npm: meetup-api-client](https://img.shields.io/npm/v/meetup-api-client.svg)](https://npmjs.com/package/meetup-api-client)
 # MAC: Meetup API Client
@@ -25,7 +27,7 @@ import { queryMeetup, queryEvent, queryGroup, queryHealthCheck, queryKeywordSear
 These are complete with typescript definitions, so you can see what data you can expect to get back from each.
 
 ## Contributing
-If you're interested in contributing, look [here](CONTRIBUTING.md).  I'd love if others would like to help build this further into a polished, full-fledged client for the Meetup API.  It would help organizers with dev skills do something with all of their group and member data.
+If you're interested in contributing, look [here](CONTRIBUTING.md).  I'd love if others would like to help build this further into a polished, full-fledged client for the Meetup API.  It would help organizers with dev skills do something with all of their group and member data.  In the meantime, I'll continue building on it where I find time, and I think in its current state it meets a variety of use cases and taps into a lot of key data in a developer-friendly way.
 
 ## Meetup API: Background
 The query system is based on Meetup API's [GQL schema](https://www.meetup.com/api/schema/#graphQl-schema).  It uses an axios version of this query:
