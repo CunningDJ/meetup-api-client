@@ -2,7 +2,7 @@
 <img src="https://cdn.bglad.io/img/meetup-api-client/meetup-api-client.logo.png" style="max-height:500px;max-width:500px;" height="100%" width="100%" alt="MAC: Meetup API Client"/>
 </div>
 
-[![npm: meetup-api-client](https://img.shields.io/npm/v/meetup-api-client.svg)](https://npmjs.com/package/meetup-api-client)
+[![npm: meetup-api-client](https://img.shields.io/npm/v/meetup-api-client.svg?color=blue)](https://npmjs.com/package/meetup-api-client)
 # MAC: Meetup API Client
 There doesn't appear to be any Node client library for [Meetup's GQL API](https://www.meetup.com/api/general/), so I made one for [organizing purposes](https://nyctnb.com), complete with Typescript types.
 
