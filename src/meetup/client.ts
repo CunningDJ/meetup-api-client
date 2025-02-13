@@ -1,5 +1,5 @@
 import axios, { AxiosPromise, AxiosResponse } from 'axios';
-import { Event, EventType, Group, GroupEvent, ID, ProNetwork, SearchConnection, SearchSources } from './types';
+import { Event, EventType, Group, GroupEvent, ID, ProNetwork, SearchConnection, SearchSources } from './client.types';
 import { EVENT_QUERY, GROUP_PAST_EVENTS_QUERY, GROUP_QUERY, GROUP_UPCOMING_EVENTS_QUERY, KEYWORD_SEARCH_QUERY, PRO_NETWORK_QUERY } from './queries';
 
 /**

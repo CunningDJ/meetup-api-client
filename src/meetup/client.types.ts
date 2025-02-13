@@ -14,7 +14,14 @@ export type Image = {
 
 type UsState = "AL" | "AK" | "AZ" | "AR" | "CA" | "CO" | "CT" | "DE" | "FL" | "GA" | "HI" | "ID" | "IL" | "IN" | "IA" | "KS" | "KY" | "LA" | "ME" | "MD" | "MA" | "MI" | "MN" | "MS" | "MO" | "MT" | "NE" | "NV" | "NH" | "NJ" | "NM" | "NY" | "NC" | "ND" | "OH" | "OK" | "OR" | "PA" | "RI" | "SC" | "SD" | "TN" | "TX" | "UT" | "VT" | "VA" | "WA" | "WV" | "WI" | "WY";
 
-type VenueType = "INDOORS" | "OUTDOORS" | "NONE";
+export type VenueType = "INDOORS" | "OUTDOORS" | "NONE";
+
+export type MemberGender =
+  "FEMALE" |
+  "MALE" |
+  "NONE" |
+  "NOT_CHECKED" |
+  "OTHER";
 
 // https://www.meetup.com/api/schema/#MemberStatus
 type MemberStatus =
@@ -28,20 +35,13 @@ type MemberStatus =
   "REMOVED" |
   "UNVERIFIED";
 
-type MemberGender =
-  "FEMALE" |
-  "MALE" |
-  "NONE" |
-  "NOT_CHECKED" |
-  "OTHER";
-
 type ReasonForJoining =
   "PRACTICE_HOBBY" |
   "BUILD_PROFESSIONAL_NETWORK" |
   "SOCIALIZING" |
   "MAKING_FRIENDS";
 
-type EventStatus =
+export type EventStatus =
   "PUBLISHED" |
   "DRAFT" |
   "CANCELLED" |
@@ -50,19 +50,19 @@ type EventStatus =
   "ACTIVE" |
   "PAST";
 
-type ProNetworkStatus = "ACTIVE" | "INACTIVE" | "FROZEN";
+export type ProNetworkStatus = "ACTIVE" | "INACTIVE" | "FROZEN";
 
-type EventPriceTier =
+export type EventPriceTier =
   "FREE" |
   "PAID";
 
-type Topic = {
+export type Topic = {
   id: ID;
   name: string;
   urlkey: string;
 };
 
-type TopicCategory = {
+export type TopicCategory = {
   id: ID;
   urlkey: string;
   name: string;
@@ -71,9 +71,9 @@ type TopicCategory = {
   defaultTopic: Topic;
 };
 
-type GroupVideoProvider = "YOUTUBE" | "VIMEO" | "OTHER";
+export type GroupVideoProvider = "YOUTUBE" | "VIMEO" | "OTHER";
 
-type GroupVideo = {
+export type GroupVideo = {
   provider: GroupVideoProvider;
   url: string;
   key: string;
@@ -98,7 +98,7 @@ export type ProNetwork = {
 };
 
 
-type GroupQuestion = {
+export type GroupQuestion = {
   id: ID;
   question: string;
   sort: number;
@@ -131,7 +131,7 @@ export type User = {
 };
 
 // https://www.meetup.com/api/schema/#Venue
-type Venue = {
+export type Venue = {
   id: ID;
   name: string;
   address: string;
@@ -145,7 +145,7 @@ type Venue = {
   lon: number;
 };
 
-type RsvpQuestion = {
+export type RsvpQuestion = {
   id: ID;
   question: string;
   required: boolean;
