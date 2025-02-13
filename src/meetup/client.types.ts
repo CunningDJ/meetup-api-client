@@ -321,6 +321,17 @@ export type SearchConnection = {
 
 export type SearchSources = "EVENTS" | "GROUPS";
 
+export type GroupEventHost = {
+  id: ID;
+  name: string;
+  username: string;
+  memberPhoto: {
+    id: ID;
+    baseUrl: string;
+    source: string;
+  }
+};
+
 export type GroupEvent = {
   id: ID;
   title: string;
@@ -340,30 +351,12 @@ export type GroupEvent = {
       source: string;
     }
   }
-  host: {
-    id: ID;
-    name: string;
-    username: string;
-    memberPhoto: {
-      id: ID;
-      baseUrl: string;
-      source: string;
-    }
-  }
+  host: GroupEventHost;
   howToFindUs: string;
   venue: Venue;
   status: EventStatus;
   shortUrl: string;
-  hosts: {
-    id: ID;
-    name: string;
-    username: string;
-    memberPhoto: {
-      id: ID;
-      baseUrl: string;
-      source: string;
-    }
-  }
+  hosts: GroupEventHost[];
   maxTickets: number;
   guestsAllowed: boolean;
   numberOfAllowedGuests: number;
