@@ -349,7 +349,7 @@ export type GroupEvent = {
       id: ID;
       baseUrl: string;
       source: string;
-    }
+    }[];
   }
   host: GroupEventHost;
   howToFindUs: string;
