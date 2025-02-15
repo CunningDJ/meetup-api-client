@@ -13,14 +13,6 @@ const axiosClient = axios.create({
 });
 
 /**
- * GQL Debug Log
- */
-export const gqlResponseDebugLog = (res: AxiosResponse) => {
-  const { data, status, statusText } = res;
-  console.debug(`HTTP ${status} (${statusText}):`, data);
-}
-
-/**
  * Base Query
  */
 const queryMeetup = <V = object, RD = object>(query: string, variables?: V): AxiosPromise<RD> => (
@@ -51,6 +43,11 @@ type QueryEventRawResponse = {
   event: Event;
 }
 
+/**
+ * Fetch the event data
+ * @param {string} eventId ID of the event
+ * @returns {Event} Event info
+ */
 export const queryEvent = async (eventId: string): AxiosPromise<Event> => {
   const rawResponse = await queryMeetup<QueryEventVariables, QueryEventRawResponse>(EVENT_QUERY, { eventId });
   const processedResponse: AxiosResponse<Event> = {
@@ -74,6 +71,11 @@ type QueryGroupEventsVariables = QueryGroupVariables & {
 type QueryGroupRawResponse = {
   groupByUrlname: Group;
 }
+/**
+ * Fetch the group's data
+ * @param {string} urlname Name of the Meetup group as it appears in the URL
+ * @returns {Group} Group data
+ */
 export const queryGroup = async (urlname: string): AxiosPromise<Group> => {
   const rawResponse = await queryMeetup<QueryGroupVariables, QueryGroupRawResponse>(GROUP_QUERY, { urlname });
   const processedResponse: AxiosResponse<Group> = {
@@ -100,6 +102,12 @@ type UpcomingEventsQueryProcessedResponse = {
   name: string;
   upcomingEvents: GroupEvent[];
 }
+/**
+ * Fetch the group's upcoming events
+ * @param {string} urlname Name of the Meetup group as it appears in the URL
+ * @param {number} eventCount How many upcoming events.  Default: 1000
+ * @returns {UpcomingEventsQueryProcessedResponse} Upcoming events
+ */
 export const queryGroupUpcomingEvents = async (urlname: string, eventCount = 1000): AxiosPromise<UpcomingEventsQueryProcessedResponse> => {
   const response = await queryMeetup<QueryGroupEventsVariables, UpcomingEventsQueryRawResponse>(GROUP_UPCOMING_EVENTS_QUERY, { urlname, eventCount });
   const { data: { groupByUrlname } } = response;
@@ -131,6 +139,12 @@ type PastEventsQueryProcessedResponse = {
   name: string;
   pastEvents: GroupEvent[];
 }
+/**
+ * Fetch the group's past events
+ * @param {string} urlname Name of the Meetup group as it appears in the URL
+ * @param {number} latestEventsCount How many of the group's latest events.  Default: 1000
+ * @returns {PastEventsQueryProcessedResponse} Past events
+ */
 export const queryGroupPastEvents = async (urlname: string, latestEventsCount = 1000): AxiosPromise<PastEventsQueryProcessedResponse> => {
   const response = await queryMeetup<QueryGroupEventsVariables, PastEventsQueryRawResponse>(GROUP_PAST_EVENTS_QUERY, { urlname, eventCount: latestEventsCount });
   const { data: { groupByUrlname } } = response;
@@ -155,6 +169,9 @@ const HEALTH_CHECK_QUERY = `
     healthCheck
   }
 `;
+/**
+ * Run a health check ping for Meetup's API.  Will throw an error if the check fails
+ */
 export const queryHealthCheck = (): AxiosPromise<HealthCheckQueryResponse> => (
   queryMeetup<undefined, HealthCheckQueryResponse>(HEALTH_CHECK_QUERY)
 );
@@ -177,6 +194,17 @@ type KeywordSearchVariables = {
   }
 }
 
+/**
+ * Run a keyword search in Meetup
+ * @param {SearchSources} source Either EVENTS or GROUPS
+ * @param {string} searchString The search string you want to use
+ * @param {number} lat Latitude to base the search
+ * @param {number} lon Longitude to base the search
+ * @param {string} city City to base the search
+ * @param {string} state State/Country region to base the search
+ * @param {EventType} eventType ONLINE, PHYSICAL or HYBRID event
+ * @returns {KeywordSearchResponse} Search results
+ */
 export const queryKeywordSearch = (source: SearchSources, searchString: string, lat = 40.7128, lon = -74.0060, city = "New York", state = "NY", eventType: EventType = "PHYSICAL"): AxiosPromise<KeywordSearchResponse> => (
   queryMeetup<KeywordSearchVariables, KeywordSearchResponse>(KEYWORD_SEARCH_QUERY, {
     filter: {
@@ -200,6 +228,11 @@ type QueryProNetworkVariables = {
   id: string;
 }
 
+/**
+ * Query the pro network for data.  Might need API KEY (see README) for this
+ * @param {string} id Pro Network ID
+ * @returns {ProNetWorkResponse} Pro Network info
+ */
 export const queryProNetwork = (id: string): AxiosPromise<ProNetWorkResponse> => (
   queryMeetup<QueryProNetworkVariables, ProNetWorkResponse>(PRO_NETWORK_QUERY, { id })
 );

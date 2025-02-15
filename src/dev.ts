@@ -1,8 +1,14 @@
 import 'dotenv/config';
-import fs from 'fs';
+import { queryEvent, queryKeywordSearch, queryHealthCheck, queryGroup, queryProNetwork, queryGroupUpcomingEvents } from './meetup/client';
+import { AxiosResponse } from 'axios';
 
-import { gqlResponseDebugLog, queryEvent, queryKeywordSearch, queryHealthCheck, queryGroup, queryProNetwork, queryGroupUpcomingEvents } from './meetup/client';
-import { EVENT_QUERY, GROUP_QUERY, GROUP_UPCOMING_EVENTS_QUERY } from './meetup/queries';
+/**
+ * Simple axios response debug log
+ */
+export const axiosResponseDebugLog = (res: AxiosResponse) => {
+  const { data, status, statusText } = res;
+  console.debug(`HTTP ${status} (${statusText}):`, data);
+}
 
 function main() {
   // // HEALTH CHECK
